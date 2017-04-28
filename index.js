@@ -8,3 +8,9 @@ app.set('views', './views');
 app.use(express.static('public'));
 
 app.get('/', (req, res) => res.render('index_dark'));
+
+class Product {
+
+}
+
+const arrProducts = [];
