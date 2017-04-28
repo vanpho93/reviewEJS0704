@@ -30,7 +30,7 @@
                     <td>
                         <a href="#">SUA</a>
                         <br /><br />
-                        <a href="/xoa/<%= i %>">XOA</a>
+                        <a href="/xoa/<%= i %>" onclick="return confirm('Are you sure you want to delete this item?');">XOA</a>
                     </td>
                 </tr>
             <% }); %>
