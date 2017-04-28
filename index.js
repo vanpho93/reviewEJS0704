@@ -9,6 +9,8 @@ app.use(express.static('public'));
 
 app.get('/', (req, res) => res.render('index_dark', { mang: arrProducts }));
 
+app.get('/admin', (req, res) => res.render('admin'));
+
 class Product {
     constructor(name, desc, image, idVideo) {
         this.name = name;
