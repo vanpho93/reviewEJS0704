@@ -20,18 +20,20 @@
                 <td>ID VIDEO</td>
                 <td>XU LY</td>
             </tr>
-            <tr>
-                <td>1</td>
-                <td>NodeJS</td>
-                <td>It is a Facebook javascript lib!</td>
-                <td><img src="images/background/16500156_th.jpg"/></td>
-                <td>213831476</td>
-                <td>
-                    <a href="#">SUA</a>
-                    <br /><br />
-                    <a href="#">XOA</a>
-                </td>
-            </tr>
+            <% mang.forEach((e, i) => { %>
+                <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%= e.name %></td>
+                    <td><%= e.desc %></td>
+                    <td><img src="images/background/<%= e.image %>"/></td>
+                    <td><%= e.idVideo %></td>
+                    <td>
+                        <a href="#">SUA</a>
+                        <br /><br />
+                        <a href="/xoa/<%= i %>">XOA</a>
+                    </td>
+                </tr>
+            <% }); %>
         </table>
         <form action="/addmin/addProduct" method="POST">
             <input type="text" placeholder="Enter name" name="name" />

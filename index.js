@@ -11,7 +11,13 @@ app.use(express.static('public'));
 
 app.get('/', (req, res) => res.render('index_dark', { mang: arrProducts }));
 
-app.get('/admin', (req, res) => res.render('admin'));
+app.get('/admin', (req, res) => res.render('admin', { mang: arrProducts }));
+
+app.get('/xoa/:index', (req, res) => {
+    const { index } = req.params;
+    arrProducts.splice(index, 1);
+    res.redirect('/admin');
+});
 
 app.post('/addmin/addProduct', parser, (req, res) => {
     const { name, desc, image, idVideo } = req.body;
