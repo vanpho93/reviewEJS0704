@@ -1,5 +1,7 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
+const parser = bodyParser.urlencoded({ extended: false });
 const app = express();
 app.listen(3000, () => console.log('Server started'));
 
@@ -10,6 +12,12 @@ app.use(express.static('public'));
 app.get('/', (req, res) => res.render('index_dark', { mang: arrProducts }));
 
 app.get('/admin', (req, res) => res.render('admin'));
+
+app.post('/addmin/addProduct', parser, (req, res) => {
+    const { name, desc, image, idVideo } = req.body;
+    arrProducts.push(new Product(name, desc, image, idVideo));
+    res.send('THEM_THANH_CONG');
+});
 
 class Product {
     constructor(name, desc, image, idVideo) {
