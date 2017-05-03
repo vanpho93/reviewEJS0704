@@ -5,14 +5,15 @@
     </head>
     <body>
         <form action="/addmin/updateProduct" method="POST">
-            <input type="text" placeholder="Enter name" name="name" />
+            <input type="text" placeholder="Enter name" name="name" value="<%= name %>"/>
             <br /><br />
-            <input type="text" placeholder="Enter desc" name="desc" />
+            <input type="text" placeholder="Enter desc" name="desc" value="<%= desc %>"/>
             <br /><br />
-            <input type="text" placeholder="Enter image" name="image" />
+            <input type="text" placeholder="Enter image" name="image" value="<%= image %>"/>
             <br /><br />
-            <input type="text" placeholder="Enter idVideo" name="idVideo" />
+            <input type="text" placeholder="Enter idVideo" name="idVideo" value="<%= idVideo %>"/>
             <br /><br />
+            <input type="hidden" name="id" value="<%= id %>" />
             <button>Update product</button>
         </form>
     </body>
