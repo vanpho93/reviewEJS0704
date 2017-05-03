@@ -19,10 +19,20 @@ app.get('/xoa/:index', (req, res) => {
     res.redirect('/admin');
 });
 
+app.get('/sua/:index', (req, res) => {
+    res.render('update');
+});
+
 app.post('/addmin/addProduct', parser, (req, res) => {
     const { name, desc, image, idVideo } = req.body;
     arrProducts.push(new Product(name, desc, image, idVideo));
     res.send('THEM_THANH_CONG');
+});
+
+app.post('/addmin/updateProduct', parser, (req, res) => {
+    const { name, desc, image, idVideo } = req.body;
+    // arrProducts.push(new Product(name, desc, image, idVideo));
+    res.send('SUA_THANH_CONG');
 });
 
 class Product {
