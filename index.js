@@ -67,3 +67,16 @@ const arrProducts = [
     new Product('React Native', 'It is a Facebook javascript lib!', '16500156_th.jpg', '213831476', 1),
     new Product('NodeJS', 'Develop by Rald, using V8 engine of chrome', '18058390_th.jpg', '18058390', 2)
 ];
+
+app.get('/array', (req, res) => {
+    res.render('arrayfile');
+});
+
+const uploadArray = multer({ storage }).array('hinh');
+
+app.post('/array', (req, res) => {
+    uploadArray(req, res, err => {
+        if (err) return res.send('LOI' + err);
+        res.send(req.files);
+    });
+});
