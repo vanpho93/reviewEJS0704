@@ -35,12 +35,12 @@
                 </tr>
             <% }); %>
         </table>
-        <form action="/addmin/addProduct" method="POST">
+        <form action="/admin/addProduct" method="POST" enctype="multipart/form-data">
             <input type="text" placeholder="Enter name" name="name" />
             <br /><br />
             <input type="text" placeholder="Enter desc" name="desc" />
             <br /><br />
-            <input type="text" placeholder="Enter image" name="image" />
+            <input type="file" name="hinhdaidien" />
             <br /><br />
             <input type="text" placeholder="Enter idVideo" name="idVideo" />
             <br /><br />

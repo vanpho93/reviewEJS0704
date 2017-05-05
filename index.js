@@ -1,5 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const multer = require('multer');
+
+
 
 const parser = bodyParser.urlencoded({ extended: false });
 const app = express();
@@ -8,6 +11,22 @@ app.listen(3000, () => console.log('Server started'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
 app.use(express.static('public'));
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => cb(null, './public/images/background'),
+    filename: (req, file, cb) => cb(null, `${Date.now()}${file.originalname}`)
+});
+
+const upload = multer({ storage }).single('hinhdaidien');
+
+app.post('/admin/addProduct', (req, res) => {
+    upload(req, res, err => {
+        const { name, desc, idVideo } = req.body;
+        const { filename } = req.file;
+        arrProducts.push(new Product(name, desc, filename, idVideo));
+        res.send('THEM_THANH_CONG');
+    });
+});
 
 app.get('/', (req, res) => res.render('index_dark', { mang: arrProducts }));
 
@@ -24,11 +43,7 @@ app.get('/sua/:index', (req, res) => {
     res.render('update', arrProducts[index]);
 });
 
-app.post('/addmin/addProduct', parser, (req, res) => {
-    const { name, desc, image, idVideo } = req.body;
-    arrProducts.push(new Product(name, desc, image, idVideo));
-    res.send('THEM_THANH_CONG');
-});
+
 
 app.post('/addmin/updateProduct', parser, (req, res) => {
     const { name, desc, image, idVideo, id } = req.body;
